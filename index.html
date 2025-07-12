@@ -5,14 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>모바일 청첩장</title>
 
+  <!-- Gowun Dodum 웹폰트 -->
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
       padding: 0;
       font-family: 'Gowun Dodum', sans-serif;
       background: white;
-      scroll-behavior: smooth;
+      scroll-behavior: smooth; /* 스크롤 부드럽게 하기 */
+    }
+
+    strong {
+      font-weight: 900;
     }
 
     header {
@@ -26,6 +32,7 @@
       padding: 1rem 0;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
       z-index: 1000;
+      margin-top: 0;
       width: 100%;
     }
 
@@ -127,7 +134,7 @@
     </div>
   </section>
 
- <section id="schedule">
+<section id="schedule">
   <div class="content" style="margin-top: 20px;">
 
     <!-- 드레스코드 이미지 -->
@@ -244,6 +251,7 @@
 </html>
 
   <script>
+    // 탭을 클릭하면 해당 섹션으로 이동
     const tabLinks = document.querySelectorAll(".tab-link");
     const sections = document.querySelectorAll("section");
 
@@ -254,23 +262,23 @@
         link.classList.add("active");
 
         const target = document.getElementById(link.getAttribute("data-target"));
-        window.scrollTo({ top: target.offsetTop - 60, behavior: 'smooth' });
+        target.scrollIntoView({ behavior: 'smooth' }); // 탭을 클릭 시 해당 섹션으로 부드럽게 스크롤
       });
     });
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const tab = document.querySelector(`a[data-target="${entry.target.id}"]`);
-        if (entry.isIntersecting) {
-          tab.classList.add("active");
+    // IntersectionObserver가 아니라, 화면에 해당 섹션이 나타날 때 탭을 활성화
+    window.addEventListener('scroll', () => {
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        const tab = document.querySelector(`a[data-target="${section.id}"]`);
+        if (rect.top <= 50 && rect.bottom >= 50) { // 화면에 50% 이상 보일 때
+          tab.classList.add('active');
         } else {
-          tab.classList.remove("active");
+          tab.classList.remove('active');
         }
       });
-    }, { threshold: 0.5 });
-
-    sections.forEach(section => observer.observe(section));
-
+    });
+    
     function copyToClipboard(text) {
       navigator.clipboard.writeText(text).then(() => {
         alert("계좌번호가 복사되었습니다!");
