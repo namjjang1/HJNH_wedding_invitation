@@ -4,22 +4,60 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>모바일 청첩장</title>
-
-  <!-- Gowun Dodum 웹폰트 -->
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+  <style>
+<style>
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  margin: 20px 0;
+  width: 100%;
+  max-width: 350px; /* 슬라이더 최대 너비 */
+  margin-left: auto;
+  margin-right: auto;
+}
 
+.slider {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.slider img {
+  flex: 0 0 100%; /* 한 번에 한 장 */
+  width: 100%;
+  border-radius: 10px;
+}
+
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.slide-btn.prev { left: 10px; }
+.slide-btn.next { right: 10px; }
+</style>
+
+  
   <style>
     body {
       margin: 0;
-      padding: 0;
+      padding-top: 60px; /* header 높이 */
       font-family: 'Gowun Dodum', sans-serif;
       background: white;
-      scroll-behavior: smooth; /* 스크롤 부드럽게 하기 */
+      scroll-behavior: smooth;
     }
 
-    strong {
-      font-weight: 900;
-    }
+    strong { font-weight: 900; }
+    
 
     header {
       position: fixed;
@@ -32,7 +70,6 @@
       padding: 1rem 0;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
       z-index: 1000;
-      margin-top: 0;
       width: 100%;
     }
 
@@ -40,8 +77,7 @@
       text-decoration: none;
       color: #333;
       font-weight: bold;
-      padding-bottom: 5px;
-      border-bottom: 2px solid transparent;
+      border-bottom: 1px solid transparent;
       transition: all 0.3s;
       cursor: pointer;
     }
@@ -52,10 +88,9 @@
     }
 
     section {
-      padding: 80px 20px 80px;
-      margin-top: 60px; /* 탭바가 고정되어 있으므로 페이지 콘텐츠와 겹치지 않도록 설정 */
+      padding: 20px 15px;
+      margin: 0;
       border-bottom: 1px solid #eee;
-      min-height: 100vh; /* 각 섹션이 화면을 꽉 채우도록 설정 */
     }
 
     .content {
@@ -69,137 +104,57 @@
     section img {
       width: 100%;
       display: block;
-      margin: 20px auto;
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <a class="tab-link active" data-target="welcome" href="#welcome">결혼소식</a>
-    <a class="tab-link" data-target="location" href="#location">오시는 길</a>
-    <a class="tab-link" data-target="contact" href="#contact">마음 전하실 곳</a>
-    <a class="tab-link" data-target="schedule" href="#schedule">예식순서</a>
-  </header>
-
-  <section id="welcome">
-    <div class="content">
-      <h2 style="font-size: 1.8rem;">결혼합니다</h2>
-      <h2 style="font-size: 1.2rem; margin-bottom: 1px;">최현준 ♥ 권남희</h2>
-      <h2 style="font-size: 1.2rem; margin-top: 0;"> 2025-09-21(일) 오후 12시</h2><br>
-      <img src="images/IMG_4112.jpeg" />
-      <p style="font-size: 1.0rem; line-height: 1.8;">
-        2015년 4월, 봄처럼 따뜻한 인연이 시작되어<br>
-        2025년 9월, 가을 햇살 아래 부부가 됩니다<br>
-        소중한 걸음으로 저희의 시작을 함께해 주신다면<br>
-        더없이 감사하고 행복하겠습니다.
-      </p>
-    </div>
-  </section>
-
-  <section id="location">
-    <div class="content">
-      <strong><mark style="background: #ffe6ec;">주소</mark></strong><br />
-      선운각 (서울특별시 강북구 우이동 260-6)<br>  
-      <a href="https://map.naver.com/v5/search/서울 강북구 우이동 260-6/place/1534254210" target="_blank" style="display: inline-block; margin-left: 10px; background: #2DB400; color: white; padding: 4px 10px; border-radius: 5px; text-decoration: none; font-size: 0.9rem;">
-        네이버 지도 보기
-      </a>
-      <a href="https://map.kakao.com/?q=선운각" target="_blank" style="display: inline-block; margin-left: 10px; background: #FEE500; color: #000; padding: 4px 10px; border-radius: 5px; text-decoration: none; font-size: 0.9rem;">
-        카카오 지도 보기
-      </a>
-      <br /><br />
-      <strong><mark style="background: #ffe6ec;">셔틀버스 탑승 안내</mark></strong><br />
-      북한산우이역 2번 출구에서 도보 약 30m<br />
-      농협장학관 앞 셔틀버스 탑승장에서 탑승 가능<br /><br />
-      <strong><mark style="background: #ffe6ec;">셔틀버스 문의</mark></strong><br />
-      0507-1399-1105<br /><br />
-      <strong><mark style="background: #ffe6ec;">도보 이동 시</mark></strong><br />
-      약 1.5km 거리, 도보 약 20분 소요<br /><br />
-      <img src="images/오시는길.jpg" alt="오시는 길 지도" />
-      <img src="images/오시는길2.jpg" alt="셔틀버스 안내" />
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="content">
-      <p><strong><mark style="background: #ffe6ec;">신랑측</mark></strong></p>
-      <p>최현준 | 연락처: 010-4621-9270<br>계좌번호: 토스 10000-2869-7819 <button onclick="copyToClipboard('10000-2869-7819')">복사</button></p>
-      <p>부 최낙원 | 연락처: 010-2998-9270<br>계좌번호: 농협 130025-51-119977 <button onclick="copyToClipboard('130025-51-119977')">복사</button></p>
-      <p>모 송미선 | 연락처: 010-4740-9270<br>계좌번호: 농협 130025-56-030741 <button onclick="copyToClipboard('130025-56-030741')">복사</button></p>
-
-      <p><strong><mark style="background: #ffe6ec;">신부측</mark></strong></p>
-      <p>권남희 | 연락처: 010-5300-3144<br>계좌번호: 토스 1000-8556-7808 <button onclick="copyToClipboard('1000-8556-7808')">복사</button></p>
-      <p>부 권덕원 | 연락처: 010-9136-2200<br>계좌번호: 국민 267302-04-116870 <button onclick="copyToClipboard('267302-04-116870')">복사</button></p>
-      <p>모 백기룡 | 연락처: 010-4920-4311<br>계좌번호: 신한 110-459-914400 <button onclick="copyToClipboard('110-459-914400')">복사</button></p>
-    </div>
-  </section>
-
-<section id="schedule">
-  <div class="content" style="margin-top: 20px;">
-
-    <!-- 드레스코드 이미지 -->
-    <img src="images/드레스코드.png" alt="예식순서 이미지"
-         style="width: 100%; max-width: 500px; border-radius: 10px;" />
-
-    <!-- 안내 문구 -->
-    <p style="margin-bottom: 10px;">
-  드레스 코드는 <strong style="color:#e91e63;">분홍</strong>, <strong style="color:#c62828;">빨강</strong> 입니다.<br>
-  필수가 아닌 <mark style="background: #ffe6ec;">선택</mark>입니다. 부담없이 포인트로 주고 오셔도 됩니다!
-</p>
-<hr style="border: none; height: 1px; background-color: #cccccc; margin: 20px auto;" />
-
-
-
-  <!-- Gowun Dodum 웹폰트 -->
-  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
-
-  <style>
-    body {
-      font-family: 'Gowun Dodum', sans-serif;
-      background-color: white;
-      margin: 0;
-      padding: 0;
-      color: #333;
+      margin: 15px auto;
     }
 
-    .container {
-      max-width: 800px;
-      margin: 50px auto;
-      background-color: white;
-      padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-    
-    h1 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
+    /* Contact 섹션 표처럼 정렬 */
+    #contact .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+      align-items: flex-start;
     }
 
-    h2 {
-      font-size: 1.0rem;
-      margin-top: 20px;
-      margin-bottom: 10px;
-    }
-    p {
+    #contact .contact-row > strong {
+      width: 30%;
+      text-align: left;
       font-size: 1.1rem;
-      line-height: 1.8;
-      color: #666;
+      padding-top: 5px;
     }
 
-    .schedule {
-      list-style-type: none;
-      padding: 0;
-      margin-top: 30px;
+    #contact .contact-details {
+      width: 70%;
     }
 
+    #contact .contact-details p {
+      margin: 5px 0;
+      text-align: left;
+      font-size: 1rem;
+    }
+
+    #contact { padding-bottom: 10px; border-bottom: none; }
+
+    /* 예식순서 */
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .container h1 { font-size: 1.5rem; margin-bottom: 15px; }
+    .container h2 { font-size: 1rem; margin-bottom: 15px; }
+
+    .schedule { list-style-type: none; padding: 0; margin-top: 15px; }
     .schedule li {
       background-color: #ffe6ec;
-      padding: 15px;
-      margin-bottom: 10px;
+      padding: 12px;
+      margin-bottom: 8px;
       border-radius: 8px;
-      font-size: 1.2rem;
+      font-size: 1rem;
       color: #333;
       display: flex;
       justify-content: space-between;
@@ -207,88 +162,426 @@
       font-weight: bold;
     }
 
-    .schedule li span {
-      font-size: 1.5rem;
-      color: #ff6b6b;
-    }
+    .schedule li span { font-size: 1.2rem; color: #ff6b6b; }
+    .emoji { font-size: 1.2rem; }
+    .footer { margin-top: 15px; font-size: 1rem; color: #ff6b6b; }
 
-    .emoji {
-      font-size: 1.4rem;
-    }
+    /* 지도 버튼 */
+    .map-button { display: inline-block; margin: 5px 5px 10px 0; padding: 4px 10px; border-radius: 5px; text-decoration: none; font-size: 0.9rem; color: white; }
+    .naver { background: #2DB400; }
+    .kakao { background: #FEE500; color: #000; }
 
-    .footer {
-      margin-top: 30px;
-      font-size: 1.1rem;
-      color: #ff6b6b;
-    }
-
+    
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h1>예식 순서</h1>
-    <h2>예식은 오후 12시에 시작합니다.</h2>
+ <script>
+const slider = document.querySelector(".slider");
+const prevBtn = document.querySelector(".slide-btn.prev");
+const nextBtn = document.querySelector(".slide-btn.next");
+const slides = document.querySelectorAll(".slider img");
+let index = 0;
 
-    <ul class="schedule">
-      <li>촛불 점화 <span class="emoji">✨</span></li>
-      <li>신랑 신부 입장 <span class="emoji">👰🤵</span></li>
-      <li>혼인서약 <span class="emoji">💍</span></li>
-      <li>축사 <span class="emoji">💌</span></li>
-      <li>신랑 신부 인사 <span class="emoji">🙇‍♀️🙇</span></li>
-      <li>행진 <span class="emoji">💐</span></li>
-      <li>단체사진 촬영 <span class="emoji">📸</span></li>
-      <li>식사 시간 <span class="emoji">🍽️</span></li>
-      <li>럭키드로우 & 퀴즈쇼 <span class="emoji">🎁🎉</span></li>
-    </ul>
+// 버튼 클릭 이동
+prevBtn.addEventListener("click", () => {
+  index = (index > 0) ? index - 1 : slides.length - 1;
+  updateSlider();
+});
+nextBtn.addEventListener("click", () => {
+  index = (index < slides.length - 1) ? index + 1 : 0;
+  updateSlider();
+});
 
-    <div class="footer">
-      <p>기다리고 있겠습니다!</p>
-      <p>축하해주세요💖</p>
+function updateSlider() {
+  slider.style.transform = `translateX(-${index * 100}%)`;
+}
+
+// 터치 스와이프
+let startX = 0;
+let isDragging = false;
+
+slider.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+  isDragging = true;
+});
+
+slider.addEventListener("touchmove", (e) => {
+  if(!isDragging) return;
+});
+
+slider.addEventListener("touchend", (e) => {
+  if(!isDragging) return;
+  let endX = e.changedTouches[0].clientX;
+  if(endX < startX - 50) { // 왼쪽으로 스와이프
+    index = (index < slides.length - 1) ? index + 1 : 0;
+  } else if(endX > startX + 50) { // 오른쪽으로 스와이프
+    index = (index > 0) ? index - 1 : slides.length - 1;
+  }
+  updateSlider();
+  isDragging = false;
+});
+</script>
+
+
+<header>
+  <a class="tab-link active" data-target="welcome" href="#welcome">결혼소식</a>
+  <a class="tab-link" data-target="location" href="#location">오시는 길</a>
+  <a class="tab-link" data-target="contact" href="#contact">마음 전하실 곳</a>
+  <a class="tab-link" data-target="schedule" href="#schedule">예식순서</a>
+</header>
+
+<section id="welcome">
+  <div class="content">
+    <h2 style="font-size: 1.8rem;">결혼합니다</h2>
+    <h2 style="font-size: 1.2rem; margin-bottom: 1px;">최현준 ♥ 권남희</h2>
+    <h2 style="font-size: 1.2rem; margin-top: 0;">2025-09-21(일) 오후 12시</h2>
+
+    <div class="slider-container">
+      <button class="slide-btn prev">&#10094;</button>
+      <div class="slider">
+        <div class="slide"><img src="images/IMG_4112.jpeg" alt="IMG_4112"></div>
+        <div class="slide"><img src="images/HO_00353.jpg" alt="HO_00353"></div>
+        <div class="slide"><img src="images/HO_00696.jpg" alt="HO_00696"></div>
+        <div class="slide"><img src="images/HO_01249.jpg" alt="HO_01249"></div>
+        <div class="slide"><img src="images/HO_01622.jpg" alt="HO_01622"></div>
+        <div class="slide"><img src="images/HO_01734.jpg" alt="HO_01734"></div>
+      </div>
+      <button class="slide-btn next">&#10095;</button>
+    </div>
+
+    <p>
+      2015년 4월, 봄처럼 따뜻한 인연이 시작되어<br>
+      2025년 9월, 가을 햇살 아래 부부가 됩니다<br>
+      소중한 걸음으로 저희의 시작을 함께해 주신다면<br>
+      더없이 감사하고 행복하겠습니다.
+    </p>
+  </div>
+</section>
+
+<style>
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.slide {
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center; /* 가운데 정렬 */
+  align-items: center;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  max-height: 400px; /* 필요 시 세로 제한 */
+  object-fit: contain; /* 비율 유지하면서 잘 보이게 */
+  border-radius: 10px;
+  max-height: 80vh;    /* 화면 높이 80%까지 확대 */
+}
+
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.slide-btn.prev { left: 10px; }
+.slide-btn.next { right: 10px; }
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const sliderContainer = document.querySelector(".slider-container");
+  const slider = sliderContainer.querySelector(".slider");
+  const slides = sliderContainer.querySelectorAll(".slide");
+  const prevBtn = sliderContainer.querySelector(".slide-btn.prev");
+  const nextBtn = sliderContainer.querySelector(".slide-btn.next");
+  let index = 0;
+
+  function updateSlider() {
+    slider.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  prevBtn.addEventListener("click", () => {
+    index = index > 0 ? index - 1 : slides.length - 1;
+    updateSlider();
+  });
+
+  nextBtn.addEventListener("click", () => {
+    index = index < slides.length - 1 ? index + 1 : 0;
+    updateSlider();
+  });
+
+  // 모바일 스와이프
+  let startX = 0;
+  slider.addEventListener("touchstart", e => startX = e.touches[0].clientX);
+  slider.addEventListener("touchend", e => {
+    const endX = e.changedTouches[0].clientX;
+    if(endX < startX - 50) { index = Math.min(index + 1, slides.length -1); }
+    else if(endX > startX + 50) { index = Math.max(index - 1, 0); }
+    updateSlider();
+  });
+});
+</script>
+
+
+
+<section id="location">
+  <div class="content">
+    <strong><mark style="background: #ffe6ec;">주소</mark></strong><br>
+    선운각 (서울특별시 강북구 우이동 260-6)<br>
+    <a href="https://map.naver.com/v5/search/서울 강북구 우이동 260-6/place/1534254210" target="_blank" class="map-button naver">네이버 지도 보기</a>
+    <a href="https://map.kakao.com/?q=선운각" target="_blank" class="map-button kakao">카카오 지도 보기</a>
+    <br>
+    <strong><mark style="background: #ffe6ec;">셔틀버스 탑승 안내</mark></strong><br>
+    북한산우이역 2번 출구에서 도보 약 30m<br>
+    농협장학관 앞 셔틀버스 탑승장에서 탑승 가능<br>
+    <strong><mark style="background: #ffe6ec;">셔틀버스 문의</mark></strong><br>
+    0507-1399-1105<br>
+    <strong><mark style="background: #ffe6ec;">도보 이동 시</mark></strong><br>
+    약 1.5km 거리, 도보 약 20분 소요<br><br>
+    <img src="images/오시는길.jpg" alt="오시는 길 지도">
+    <img src="images/오시는길2.jpg" alt="셔틀버스 안내">
+  </div>
+</section>
+
+<!-- 마음 전하실 곳 -->
+
+<style>
+  .contact-details button {
+    background: transparent; /* 투명 배경 */
+    border: none;            /* 테두리 제거 */
+    color: inherit;          /* 부모 글씨 색상과 동일 */
+    font-family: inherit;    /* 부모 글씨체와 동일 */
+    font-size: inherit;      /* 글씨 크기 통일 */
+    cursor: pointer;         /* 클릭 커서 */
+    padding: 0;              /* 여백 제거 */
+    margin-left: 5px;        /* 이름과 살짝 간격 */
+  }
+
+  .contact-details button:hover {
+    text-decoration: underline; /* 호버 시 밑줄 */
+  }
+</style>
+
+<section id="contact">
+  <div class="content">
+    <div class="contact-row">
+      <strong>신랑측</strong>
+      <div class="contact-details">
+        <p>
+          최현준 | 
+          <a href="tel:01046219270">☎</a> | 
+          <button onclick="copyToClipboard('토스 10000-2869-7819')">계좌번호</button>
+        <p>
+          부 최낙원 | 
+          <a href="tel:01029989270">☎</a> | 
+          <button onclick="copyToClipboard('농협 130025-51-119977')">계좌번호</button>
+        </p>
+        <p>
+          모 송미선 | 
+          <a href="tel:01047409270">☎</a> | 
+          <button onclick="copyToClipboard('농협 130025-56-030741')">계좌번호</button>
+        </p>
+      </div>
+    </div>
+
+    <div class="contact-row">
+      <strong>신부측</strong>
+      <div class="contact-details">
+        <p>
+          권남희 | 
+          <a href="tel:01053003144">☎</a> | 
+          <button onclick="copyToClipboard('토스 1000-8556-7808')">계좌번호</button>
+        </p>
+        <p>
+          부 권덕원 | 
+          <a href="tel:01091362200">☎</a> | 
+          <button onclick="copyToClipboard('국민 267302-04-116870')">계좌번호</button>
+        </p>
+        <p>
+          모 백기룡 | 
+          <a href="tel:01049204311">☎</a> | 
+          <button onclick="copyToClipboard('신한 110-459-914400')">계좌번호</button>
+        </p>
+      </div>
     </div>
   </div>
+</section>
 
-</body>
-</html>
 
-  <script>
-    // 탭을 클릭하면 해당 섹션으로 이동
-    const tabLinks = document.querySelectorAll(".tab-link");
-    const sections = document.querySelectorAll("section");
+<script>
+function copyToClipboard(accountInfo) {
+  navigator.clipboard.writeText(accountInfo).then(() => {
+    alert("계좌정보가 복사되었습니다!");
+  }).catch(err => {
+    alert("복사에 실패했습니다. 브라우저가 허용하지 않을 수 있어요.");
+    console.error(err);
+  });
+}
+</script>
+</script>
+
+
+
+<section id="schedule">
+  <div class="content">
+    <img src="images/드레스코드.png" alt="드레스코드">
+    <p>
+      드레스 코드는 <strong style="color:#e91e63;">분홍</strong>, <strong style="color:#c62828;">빨강</strong> 입니다.<br>
+      필수가 아닌 <mark style="background: #ffe6ec;">선택</mark>입니다.
+    </p>
+
+<section id="schedule">
+  <div class="content">
+    <h1>예식 순서</h1>
+
+    <ol class="ceremony-list">
+      <li>
+        <span class="step">1.</span>
+        <span class="title">본식 시작</span>
+        <span class="person">사회자</span>
+      </li>
+      <li>
+        <span class="step">2.</span>
+        <span class="title">화촉 점화</span>
+        <span class="person">양가 어머님</span>
+      </li>
+      <li>
+        <span class="step">3.</span>
+        <span class="title">신랑, 신부 입장</span>
+      </li>
+      <li>
+        <span class="step">4.</span>
+        <span class="title">성혼선언문</span>
+        <span class="person">사회자</span>
+      </li>
+      <li>
+        <span class="step">5.</span>
+        <span class="title">축사</span>
+        <span class="person">신부 남동생</span>
+      </li>
+      <li>
+        <span class="step">6.</span>
+        <span class="title">부모님 및 내빈께 인사</span>
+      </li>
+      <li>
+        <span class="step">7.</span>
+        <span class="title">닭날리기</span>
+        <span class="person">신부 어머님, 신랑 아버님</span>
+      </li>
+      <li>
+        <span class="step">8.</span>
+        <span class="title">럭키드로우</span>
+      </li>
+      <li>
+        <span class="step">9.</span>
+        <span class="title">신랑, 신부 행진</span>
+        <span class="person"></span>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<style>
+.ceremony-list {
+  list-style: none;
+  padding: 0;
+  counter-reset: step;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.ceremony-list li {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Gowun Dodum', sans-serif;
+  margin-bottom: 10px;
+  line-height: 1.5;
+  border-bottom: 1px dotted #ccc;
+  padding-bottom: 5px;
+}
+
+.ceremony-list .step {
+  width: 2em;
+  text-align: left;
+  flex-shrink: 0;
+}
+
+.ceremony-list .title {
+  flex-grow: 1;
+  text-align: left;
+  padding: 0 10px;
+}
+
+.ceremony-list .person {
+  flex-shrink: 0;
+  text-align: right;
+  color: #555;
+  font-size: 0.95rem;
+}
+</style>
+
+
+<script>
+  const tabLinks = document.querySelectorAll(".tab-link");
+  const sections = document.querySelectorAll("section");
+  const header = document.querySelector("header");
+
+  // 탭 클릭 시 이동
+  tabLinks.forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      tabLinks.forEach(l => l.classList.remove("active"));
+      link.classList.add("active");
+
+      const target = document.getElementById(link.getAttribute("data-target"));
+      const top = target.offsetTop - header.offsetHeight;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    });
+  });
+
+  // 스크롤 시 현재 섹션 판단
+  window.addEventListener('scroll', () => {
+    const scrollMiddle = window.scrollY + window.innerHeight / 2;
+    let currentSectionId = sections[0].id;
+
+    sections.forEach(section => {
+      const top = section.offsetTop - header.offsetHeight;
+      const bottom = top + section.offsetHeight;
+      if (scrollMiddle >= top && scrollMiddle < bottom) {
+        currentSectionId = section.id;
+      }
+    });
 
     tabLinks.forEach(link => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        tabLinks.forEach(l => l.classList.remove("active"));
+      if (link.getAttribute("data-target") === currentSectionId) {
         link.classList.add("active");
-
-        const target = document.getElementById(link.getAttribute("data-target"));
-        target.scrollIntoView({ behavior: 'smooth' }); // 탭을 클릭 시 해당 섹션으로 부드럽게 스크롤
-      });
+      } else {
+        link.classList.remove("active");
+      }
     });
+  });
 
-    // IntersectionObserver가 아니라, 화면에 해당 섹션이 나타날 때 탭을 활성화
-    window.addEventListener('scroll', () => {
-      sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        const tab = document.querySelector(`a[data-target="${section.id}"]`);
-        if (rect.top <= 50 && rect.bottom >= 50) { // 화면에 50% 이상 보일 때
-          tab.classList.add('active');
-        } else {
-          tab.classList.remove('active');
-        }
-      });
-    });
-    
-    function copyToClipboard(text) {
-      navigator.clipboard.writeText(text).then(() => {
-        alert("계좌번호가 복사되었습니다!");
-      }).catch(err => {
-        alert("복사에 실패했습니다. 브라우저가 허용하지 않을 수 있어요.");
-        console.error(err);
-      });
-    }
-  </script>
+</script>
 
 </body>
 </html>
