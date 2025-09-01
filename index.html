@@ -168,6 +168,19 @@
     </div>
   </section>
 
+  <section id="dress-code">
+  <div class="content">
+    <h1>드레스 코드</h1>
+    <img src="images/드레스코드.png" alt="드레스코드" 
+         style="display: block; margin: 10px auto; width: 100%; max-width: 400px; border-radius: 8px;">
+    <p>
+      드레스 코드는 <strong style="color:#e91e63;">분홍</strong>/ <strong style="color:#c62828;">빨강</strong>입니다.<br>
+      필수가 아닌 <mark style="background: #ffe6ec;">선택</mark>이니 부담없이 참석해주세요!
+    </p>
+  </div>
+</section>
+
+
   <!-- ========== 예식순서 ========== -->
   <section id="schedule">
     <div class="content">
@@ -187,25 +200,59 @@
   </section>
 
   <!-- ========== 마음 전하실 곳 ========== -->
-  <section id="contact">
-    <div class="content">
-      <h1>마음 전하실 곳</h1>
-      <div class="info-card">
-        <div class="contact-details">
-          <strong>신랑측</strong>
-          <p>최현준 | <a href="tel:01046219270">☏</a> | <button onclick="copyToClipboard('토스 10000-2869-7819')">계좌번호</button></p>
-          <p>부 최낙원 | <a href="tel:01029989270">☏</a> | <button onclick="copyToClipboard('농협 130025-51-119977')">계좌번호</button></p>
-          <p>모 송미선 | <a href="tel:01047409270">☏</a> | <button onclick="copyToClipboard('농협 130025-56-030741')">계좌번호</button></p>
-        </div>
-        <div class="contact-details">
-          <strong>신부측</strong>
-          <p>권남희 | <a href="tel:01053003144">☏</a> | <button onclick="copyToClipboard('토스 1000-8556-7808')">계좌번호</button></p>
-          <p>부 권덕원 | <a href="tel:01091362200">☏</a> | <button onclick="copyToClipboard('국민 267302-04-116870')">계좌번호</button></p>
-          <p>모 백기룡 | <a href="tel:01049204311">☏</a> | <button onclick="copyToClipboard('신한 110-459-914400')">계좌번호</button></p>
-        </div>
+<section id="contact">
+  <div class="content">
+    <h1>마음 전하실 곳</h1>
+    <div class="info-card">
+      <!-- 신랑측 -->
+      <div class="contact-details">
+        <strong>신랑측</strong>
+        <p>최현준 | ☏ 010-4621-9270<br>
+           <span class="copy-account" onclick="copyToClipboard('토스 10000-2869-7819')">토스 10000-2869-7819</span></p>
+        <p>부 최낙원 | ☏ 010-2998-9270<br>
+           <span class="copy-account" onclick="copyToClipboard('농협 130025-51-119977')">농협 130025-51-119977</span></p>
+        <p>모 송미선 | ☏ 010-4740-9270<br>
+           <span class="copy-account" onclick="copyToClipboard('농협 130025-56-030741')">농협 130025-56-030741</span></p>
+      </div>
+
+      <!-- 신부측 -->
+      <div class="contact-details">
+        <strong>신부측</strong>
+        <p>권남희 | ☏ 010-5300-3144<br>
+           <span class="copy-account" onclick="copyToClipboard('토스 1000-8556-7808')">토스 1000-8556-7808</span></p>
+        <p>부 권덕원 | ☏ 010-9136-2200<br>
+           <span class="copy-account" onclick="copyToClipboard('국민 267302-04-116870')">국민 267302-04-116870</span></p>
+        <p>모 백기룡 | ☏ 010-4920-4311<br>
+           <span class="copy-account" onclick="copyToClipboard('신한 110-459-914400')">신한 110-459-914400</span></p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<style>
+.copy-account {
+  cursor: pointer;
+  text-decoration: none; /* 밑줄 제거 */
+}
+.copy-account:hover {
+  opacity: 0.8;
+}
+</style>
+
+<script>
+function copyToClipboard(accountInfo) {
+  navigator.clipboard.writeText(accountInfo).then(() => {
+    alert("계좌정보가 복사되었습니다!");
+  }).catch(err => {
+    alert("복사에 실패했습니다. 브라우저가 허용하지 않을 수 있어요.");
+    console.error(err);
+  });
+}
+</script>
+
+}
+</script>
+
 
   <!-- ========== 오시는 길 ========== -->
   <!-- ---------- 오시는 길 (Location) ---------- -->
@@ -306,11 +353,7 @@
       updateSlider();
     });
 
-    // 계좌번호 복사
-    function copyToClipboard(accountInfo) {
-      navigator.clipboard.writeText(accountInfo).then(()=>{ alert("계좌정보가 복사되었습니다!"); })
-      .catch(err=>{ alert("복사 실패. 브라우저 허용 확인"); console.error(err); });
-    }
+  
   </script>
 
 </body>
