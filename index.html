@@ -67,26 +67,6 @@
     .ceremony-list .title { flex-grow: 1; text-align: left; padding: 0 10px; }
     .ceremony-list .person { flex-shrink: 0; text-align: right; color: #555; font-size: 0.95rem; }
 
-    /* ========== 마음 전하실 곳 ========== */
-    .info-card {
-      border: 1px solid #eee;
-      border-radius: 10px;
-      padding: 15px 20px;
-      margin-bottom: 15px;
-      background: #fafafa;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .info-card > div { flex: 1 1 45%; }
-    .info-card strong { display: block; font-weight: 900; color: #333; margin-bottom: 6px; font-size: 1.1rem; }
-    .info-card p, .info-card a, .info-card button { margin: 4px 0; font-size: 1rem; color: #444; }
-    .contact-details button {
-      background: transparent; border: none; color: inherit;
-      font-family: inherit; font-size: inherit; cursor: pointer; padding: 0; margin-left: 5px;
-    }
-    .contact-details button:hover { text-decoration: underline; }
 
     /* ========== 오시는 길 ========== */
    #location .info-block {
@@ -187,7 +167,7 @@
       <h1>예식 순서</h1>
       <ol class="ceremony-list">
         <li><span class="step">1.</span><span class="title">본식 시작</span><span class="person">사회자</span></li>
-        <li><span class="step">2.</span><span class="title">화촉 점화</span><span class="person">양가 어머님</span></li>
+        <li><span class="step">2.</span><span class="title">화촉 점화</span><span class="person">신랑, 신부 어머님</span></li>
         <li><span class="step">3.</span><span class="title">신랑, 신부 입장</span></li>
         <li><span class="step">4.</span><span class="title">성혼선언문</span><span class="person">사회자</span></li>
         <li><span class="step">5.</span><span class="title">축사</span><span class="person">신부 남동생</span></li>
@@ -199,7 +179,8 @@
     </div>
   </section>
 
-  <!-- ========== 마음 전하실 곳 ========== -->
+<!-- ========== 마음 전하실 곳 ========== -->
+<!-- ========== 마음 전하실 곳 ========== -->
 <section id="contact">
   <div class="content">
     <h1>마음 전하실 곳</h1>
@@ -207,55 +188,80 @@
       <!-- 신랑측 -->
       <div class="contact-details">
         <strong>신랑측</strong>
-        <p>최현준 | ☏ 010-4621-9270<br>
-           <span class="copy-account" onclick="copyToClipboard('토스 10000-2869-7819')">토스 10000-2869-7819</span></p>
-        <p>부 최낙원 | ☏ 010-2998-9270<br>
-           <span class="copy-account" onclick="copyToClipboard('농협 130025-51-119977')">농협 130025-51-119977</span></p>
-        <p>모 송미선 | ☏ 010-4740-9270<br>
-           <span class="copy-account" onclick="copyToClipboard('농협 130025-56-030741')">농협 130025-56-030741</span></p>
+        <p>
+          최현준 | <a href="tel:01046219270">☏</a><br>
+          <span class="account" onclick="copyToClipboard('토스 1000-2869-7819')">토스 1000-2869-7819</span>
+        </p>
+        <p>
+          부 최낙원 | <a href="tel:01029989270">☏</a><br>
+          <span class="account" onclick="copyToClipboard('농협 130025-51-119977')">농협 130025-51-119977</span>
+        </p>
+        <p>
+          모 송미선 | <a href="tel:01047409270">☏</a><br>
+          <span class="account" onclick="copyToClipboard('농협 130025-56-030741')">농협 130025-56-030741</span>
+        </p>
       </div>
 
       <!-- 신부측 -->
       <div class="contact-details">
         <strong>신부측</strong>
-        <p>권남희 | ☏ 010-5300-3144<br>
-           <span class="copy-account" onclick="copyToClipboard('토스 1000-8556-7808')">토스 1000-8556-7808</span></p>
-        <p>부 권덕원 | ☏ 010-9136-2200<br>
-           <span class="copy-account" onclick="copyToClipboard('국민 267302-04-116870')">국민 267302-04-116870</span></p>
-        <p>모 백기룡 | ☏ 010-4920-4311<br>
-           <span class="copy-account" onclick="copyToClipboard('신한 110-459-914400')">신한 110-459-914400</span></p>
+        <p>
+          권남희 | <a href="tel:01053003144">☏</a><br>
+          <span class="account" onclick="copyToClipboard('토스 1000-8556-7808')">토스 1000-8556-7808</span>
+        </p>
+        <p>
+          부 권덕원 | <a href="tel:01091362200">☏</a><br>
+          <span class="account" onclick="copyToClipboard('국민 267302-04-116870')">국민 267302-04-116870</span>
+        </p>
+        <p>
+          모 백기룡 | <a href="tel:01049204311">☏</a><br>
+          <span class="account" onclick="copyToClipboard('신한 110-459-914400')">신한 110-459-914400</span>
+        </p>
       </div>
     </div>
   </div>
 </section>
 
 <style>
-.copy-account {
+/* 카드 기본 스타일 */
+.info-card {
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.info-card > div { flex: 1 1 45%; }
+.info-card strong { display: block; font-weight: 900; color: #333; margin-bottom: 6px; font-size: 1.1rem; }
+.info-card p, .info-card a { margin: 4px 0; font-size: 1rem; color: #444; }
+
+/* 계좌번호 스타일 */
+.account {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: #555;
   cursor: pointer;
-  text-decoration: none; /* 밑줄 제거 */
+  margin-top: 2px;
 }
-.copy-account:hover {
-  opacity: 0.8;
+.account:hover {
+  color: #ff6b6b;
+  opacity: 0.9;
 }
+
 </style>
 
 <script>
-function copyToClipboard(accountInfo) {
-  navigator.clipboard.writeText(accountInfo).then(() => {
-    alert("계좌정보가 복사되었습니다!");
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text).then(() => {
+    alert("계좌번호가 복사되었습니다: " + text);
   }).catch(err => {
-    alert("복사에 실패했습니다. 브라우저가 허용하지 않을 수 있어요.");
-    console.error(err);
+    alert("복사에 실패했습니다. 브라우저 환경을 확인해주세요.");
   });
 }
 </script>
 
-}
-</script>
 
 
-  <!-- ========== 오시는 길 ========== -->
-  <!-- ---------- 오시는 길 (Location) ---------- -->
 <!-- ---------- 오시는 길 (Location) ---------- -->
 <section id="location">
   <div class="content">
