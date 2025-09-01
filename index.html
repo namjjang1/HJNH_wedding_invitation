@@ -91,9 +91,10 @@
   
 }
 @media screen and (max-width: 480px) {
-  #location .left-title {
-    width: 100px; /* 폭 줄임 */
+  .info-card > div {
+    flex: 1 1 100%;
   }
+}
 
   #location .info-content {
     flex: 1 1 0;
@@ -234,6 +235,10 @@
 .info-card > div { flex: 1 1 45%; }
 .info-card strong { display: block; font-weight: 900; color: #333; margin-bottom: 6px; font-size: 1.1rem; }
 .info-card p, .info-card a { margin: 4px 0; font-size: 1rem; color: #444; }
+
+@media screen and (max-width: 480px) {
+  .info-card > div { flex: 1 1 100%; }
+}
 
 /* 계좌번호 스타일 */
 .account {
