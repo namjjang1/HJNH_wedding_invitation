@@ -69,37 +69,35 @@
 
 
     /* ========== 오시는 길 ========== */
-   #location .info-block {
-  display: flex;
-  align-items: flex-start; /* 위쪽 기준 정렬 */
-  margin-bottom: 14px;
+   /* 오시는 길 - 제목 위, 내용 아래 */
+#location .info-block {
+  display: block; /* flex 제거 */
+  margin-bottom: 15px;
 }
 
 #location .left-title {
-  width: 150px; /* 제목 고정 폭 */
-  flex-shrink: 0;
-  font-weight: 900;
+  display: block; /* 제목은 블록 */
+  font-weight: 700;
   color: #333;
-  text-align: left; /* 왼쪽 정렬 */
+  text-align: left;
 }
 
 #location .info-content {
-  flex: 1;
   text-align: left;
   color: #444;
   line-height: 1.5;
-  
 }
-@media screen and (max-width: 480px) {
-  .info-card > div {
-    flex: 1 1 100%;
-  }
+#location .info-content p {
+  margin: 0;       /* p 태그 위/아래 여백 제거 */
+  margin-bottom: 4px; /* 필요한 경우만 약간 여백 */
 }
 
-  #location .info-content {
-    flex: 1 1 0;
-  }
+#location .info-content .map-button {
+  margin-top: 2px;  /* 위쪽 간격 살짝만 */
+  margin-right: 8px; /* 기존 오른쪽 간격 유지 */
 }
+
+
 
     .map-button { display: inline-block; margin-top: 5px; margin-right: 8px; padding: 5px 10px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; font-weight: 700; }
     .map-button.naver { background: #2DB400; color: #fff; }
@@ -236,10 +234,6 @@
 .info-card strong { display: block; font-weight: 900; color: #333; margin-bottom: 6px; font-size: 1.1rem; }
 .info-card p, .info-card a { margin: 4px 0; font-size: 1rem; color: #444; }
 
-@media screen and (max-width: 480px) {
-  .info-card > div { flex: 1 1 100%; }
-}
-
 /* 계좌번호 스타일 */
 .account {
   display: inline-block;
@@ -272,48 +266,45 @@ function copyToClipboard(text) {
   <div class="content">
     <h1>오시는 길</h1>
 
-
-    <!-- 정보 카드 -->
-    <div class="info-card" style="flex-direction: column; gap: 15px;">
-      <!-- 주소 -->
-      <div class="info-block">
-        <strong class="left-title">주소</strong>
-        <div class="info-content">
-          <p>선운각 (서울특별시 강북구 우이동 260-6)</p>
-          <a class="map-button naver" href="https://map.naver.com/v5/search/서울 강북구 우이동 260-6/place/1534254210" target="_blank">네이버 지도 보기</a>
-          <a class="map-button kakao" href="https://map.kakao.com/?q=선운각" target="_blank">카카오 지도 보기</a>
-        </div>
+    <!-- 주소 -->
+    <div class="info-block">
+      <strong class="left-title">주소</strong>
+      <div class="info-content">
+        <p>선운각 (서울특별시 강북구 우이동 260-6)</p>
+        <a class="map-button naver" href="https://map.naver.com/v5/search/서울 강북구 우이동 260-6/place/1534254210" target="_blank">네이버 지도 보기</a>
+        <a class="map-button kakao" href="https://map.kakao.com/?q=선운각" target="_blank">카카오 지도 보기</a>
       </div>
+    </div>
 
-      <!-- 셔틀버스 탑승 안내 -->
-      <div class="info-block">
-        <strong class="left-title">셔틀버스 탑승 안내</strong>
-        <div class="info-content">
-          북한산우이역 2번 출구에서 도보 약 30m<br>
-          농협장학관 앞 셔틀버스 탑승장에서 탑승 가능
-        </div>
+    <!-- 셔틀버스 안내 -->
+    <div class="info-block">
+      <strong class="left-title">셔틀버스 탑승 안내</strong>
+      <div class="info-content">
+        북한산우이역 2번 출구에서 도보 약 30m<br>
+        농협장학관 앞 셔틀버스 탑승장에서 탑승 가능
       </div>
+    </div>
 
-      <!-- 셔틀버스 문의 -->
-      <div class="info-block">
-        <strong class="left-title">셔틀버스 문의</strong>
-        <div class="info-content">0507-1399-1105</div>
-      </div>
+    <!-- 셔틀버스 문의 -->
+    <div class="info-block">
+      <strong class="left-title">셔틀버스 문의</strong>
+      <div class="info-content">0507-1399-1105</div>
+    </div>
 
-      <!-- 도보 이동 시 -->
-      <div class="info-block">
-        <strong class="left-title">도보 이동 시</strong>
-        <div class="info-content">북한산 우이역에서 약 1.5km 거리, 도보 약 20분 소요</div>
-      </div>
+    <!-- 도보 이동 시 -->
+    <div class="info-block">
+      <strong class="left-title">도보 이동 시</strong>
+      <div class="info-content">북한산 우이역에서 약 1.5km 거리, 도보 약 20분 소요</div>
+    </div>
 
-              <div class="map-images">
-          <img src="images/오시는길.jpg" alt="오시는 길 지도">
-          <img src="images/오시는길2.jpg" alt="셔틀버스 안내" style="margin-top:10px;">
-        </div>
-
+    <!-- 지도 이미지 -->
+    <div class="map-images">
+      <img src="images/오시는길.jpg" alt="오시는 길 지도">
+      <img src="images/오시는길2.jpg" alt="셔틀버스 안내" style="margin-top:10px;">
     </div>
   </div>
 </section>
+
 
 
   <script>
